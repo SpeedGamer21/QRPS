@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QRPS
 {
-    public partial class frmMain : Form
+    public partial class frmNew : Form
     {
-        public frmMain()
+        public frmNew()
         {
             InitializeComponent();
         }

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace QRPS
 {
-    public partial class frmMain : Form
+    public partial class frmMaster : Form
     {
-        public frmMain()
+        public frmMaster()
         {
             InitializeComponent();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
