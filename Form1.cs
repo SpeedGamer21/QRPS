@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace QRPS
 {
     public partial class frmMain : Form
@@ -15,6 +15,11 @@ namespace QRPS
         public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

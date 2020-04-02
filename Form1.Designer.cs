@@ -77,6 +77,7 @@
             this.btnNew.Text = "Add New Entry";
             this.btnNew.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnExit
             // 
