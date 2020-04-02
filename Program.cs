@@ -16,7 +16,7 @@ namespace QRPS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmNew());
+            Application.Run(new frmMaster());
         }
     }
 }

@@ -7,24 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+
 namespace QRPS
 {
-    public partial class frmMain : Form
+    public partial class Print_Preview : Form
     {
-        public frmMain()
+        public Print_Preview()
         {
             InitializeComponent();
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMaster_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

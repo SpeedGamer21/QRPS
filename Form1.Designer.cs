@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnMaster = new System.Windows.Forms.Button();
-            this.btnGen = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -41,28 +40,14 @@
             this.btnMaster.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnMaster.Image")));
             this.btnMaster.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMaster.Location = new System.Drawing.Point(79, 89);
+            this.btnMaster.Location = new System.Drawing.Point(91, 83);
             this.btnMaster.Name = "btnMaster";
             this.btnMaster.Size = new System.Drawing.Size(169, 79);
             this.btnMaster.TabIndex = 0;
             this.btnMaster.Text = "Master List";
             this.btnMaster.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btnMaster.UseVisualStyleBackColor = true;
-            // 
-            // btnGen
-            // 
-            this.btnGen.BackColor = System.Drawing.Color.Transparent;
-            this.btnGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGen.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGen.Image = ((System.Drawing.Image)(resources.GetObject("btnGen.Image")));
-            this.btnGen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGen.Location = new System.Drawing.Point(297, 89);
-            this.btnGen.Name = "btnGen";
-            this.btnGen.Size = new System.Drawing.Size(169, 79);
-            this.btnGen.TabIndex = 1;
-            this.btnGen.Text = "Generate New";
-            this.btnGen.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnGen.UseVisualStyleBackColor = false;
+            this.btnMaster.Click += new System.EventHandler(this.btnMaster_Click);
             // 
             // btnNew
             // 
@@ -70,7 +55,7 @@
             this.btnNew.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNew.Location = new System.Drawing.Point(182, 203);
+            this.btnNew.Location = new System.Drawing.Point(264, 205);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(169, 79);
             this.btnNew.TabIndex = 2;
@@ -98,7 +83,6 @@
             this.ClientSize = new System.Drawing.Size(541, 385);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.btnGen);
             this.Controls.Add(this.btnMaster);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
@@ -111,7 +95,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnMaster;
-        private System.Windows.Forms.Button btnGen;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnExit;
     }
