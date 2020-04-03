@@ -9,11 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace QRPS
 {
     public partial class frmMaster : Form
     {
+        MySQLAccess mysql = new MySQLAccess(ConfigurationManager.ConnectionStrings["qrps"].ToString());
+        DataTable mstrLst = new DataTable();
+
         public frmMaster()
         {
             InitializeComponent();
@@ -25,20 +29,25 @@ namespace QRPS
         }
 
         private void button1_Click(object sender, EventArgs e)
-
-
         {
-
-            MySqlConnection conn= new MySqlConnection("datasource=localhost;port=3306;database=qrps;username=root;password=");
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM qrps WHERE name LIKE @name", conn);
-            cmd.Parameters.AddWithValue("@name", string.Format("%{0}%", txtSearch.Text));
-            MySqlDataAdapter sda = new MySqlDataAdapter();
-            sda.SelectCommand = cmd;
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            dgv.DataSource = dt;
-            conn.Close();
-            conn.Dispose();
+            //try
+            //{
+            //    mstrLst.DefaultView.RowFilter = string.Format("name LIKE '%{0}%'", txtSearch.Text);
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "System Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //MySqlConnection conn= new MySqlConnection("datasource=localhost;port=3306;database=qrps;username=root;password=");
+            //MySqlCommand cmd = new MySqlCommand("SELECT * FROM qrps WHERE name LIKE @name", conn);
+            //cmd.Parameters.AddWithValue("@name", string.Format("%{0}%", txtSearch.Text));
+            //MySqlDataAdapter sda = new MySqlDataAdapter();
+            //sda.SelectCommand = cmd;
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            //dgv.DataSource = dt;
+            //conn.Close();
+            //conn.Dispose();
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -66,6 +75,32 @@ namespace QRPS
             var MyData = QG.CreateQrCode(lblname.Text, QRCoder.QRCodeGenerator.ECCLevel.H);
             var code = new QRCoder.QRCode(MyData);
             pictureBox2.Image = code.GetGraphic(50);
+        }
+
+        private void frmMaster_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                mstrLst = mysql.Get("SELECT * FROM qrps");
+                dgv.DataSource = mstrLst;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "System Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(mstrLst.Rows.Count != 0)
+                    mstrLst.DefaultView.RowFilter = string.Format("name LIKE '%{0}%'", txtSearch.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "System Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
