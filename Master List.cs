@@ -59,5 +59,13 @@ namespace QRPS
                 pictureBox1.Image = Image.FromStream(stream);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            QRCoder.QRCodeGenerator QG = new QRCoder.QRCodeGenerator();
+            var MyData = QG.CreateQrCode(lblname.Text, QRCoder.QRCodeGenerator.ECCLevel.H);
+            var code = new QRCoder.QRCode(MyData);
+            pictureBox2.Image = code.GetGraphic(50);
+        }
     }
 }
